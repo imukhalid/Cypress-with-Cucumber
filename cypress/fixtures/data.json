@@ -1,0 +1,12 @@
+{
+    "credentials": {
+        "user_email": "fullservice@df.co",
+        "user_password": "dffullservice"
+    },
+    "loginPageText": {
+        "loginWelcomeText": "Welcome back! Login below"
+    },
+    "homePageText": {
+
+    }
+}
