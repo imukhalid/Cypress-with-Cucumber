@@ -1,19 +1,19 @@
 const BasePage = require("../BasePage");
 
 class LandingPage {
-  static landingPage = "#home";
-  static login = ".main-nav__link--sign-in";
+  static landingPageBody = "div[id='page']";
+  static signin = "a[class='login']";
 
   static load() {
-    cy.visit("http://s.designfiles.co");
+    cy.visit("http://automationpractice.com/index.php");
   }
 
   static isLoaded() {
-    cy.isVisible(this.landingPage);
+    return cy.isVisible(this.landingPageBody);
   }
 
-  static loginLink() {
-    cy.isVisible(this.login).click();
+  static signinLink() {
+    cy.isVisible(this.signin).click();
   }
 }
 

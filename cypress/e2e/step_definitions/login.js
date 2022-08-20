@@ -1,7 +1,6 @@
 import LoginPage from "../../pageObjects/pages/LoginPage";
-import HomePage from "../../pageObjects/pages/HomePage";
+import MyAccount from "../../pageObjects/pages/MyAccount";
 import LandingPage from "../../pageObjects/pages/LandingPage";
-import data from "../../fixtures/data.json";
 import {
   Given,
   When,
@@ -14,8 +13,8 @@ Given("user accesses Landing Page", () => {
   LandingPage.isLoaded();
 });
 
-When("user click on login page", () => {
-  LandingPage.loginLink();
+When("user click on login link", () => {
+  LandingPage.signinLink();
   LoginPage.isLoaded();
 });
 
@@ -28,10 +27,18 @@ And(
   }
 );
 
-Then("user is on Home page", () => {
-  HomePage.isLoaded();
+Then("user is on my account page", () => {
+  MyAccount.isLoaded();
 });
 
-And("My Home page contains {string} in nav bar", (Projects) => {
-  HomePage.projectsManu().should("contain", Projects);
+And("My Home page contains MY ACCOUNT as heading", () => {
+  MyAccount.pageHeading().should("contain", 'My account');
+});
+
+When("user Logout", () => {
+  MyAccount.logoutLink();
+});
+
+Then("user is on Landing Page", () => {
+  LandingPage.isLoaded().url().should('include', 'http://automationpractice.com/index.php');
 });

@@ -1,16 +1,21 @@
 import BasePage from "../BasePage";
 
 class LoginPage {
-  static loginHeading = "h1.auth-box__header-text";
-  static user_email = "input[id='user_email']";
-  static user_password = "input[id='user_password']";
-  static login = "button[type='submit']";
+  static loginPageBody = "div[id='page']";
+  static heading = "h3[class='page-subheading']";
+  static user_email = "input[id='email']";
+  static user_password = "input[id='passwd']";
+  static loginBtn = "button[id='SubmitLogin']";
 
   static isLoaded() {
-    cy.isVisible(this.loginHeading);
+    cy.isVisible(this.loginPageBody);
     cy.isVisible(this.user_email);
     cy.isVisible(this.user_password);
-    cy.isVisible(this.login);
+    cy.isVisible(this.loginBtn);
+  }
+
+  static loginHeading() {
+    return cy.get(this.heading);
   }
 
   static userEmail(email) {
@@ -22,7 +27,7 @@ class LoginPage {
   }
 
   static submit() {
-    return cy.get(this.login).click();
+    return cy.get(this.loginBtn).click();
   }
 }
 

@@ -1,13 +1,17 @@
-Feature: Login page
+Feature: Login and Logout
 
-    Background: Login with a valid account
+    Scenario: Login with a valid account
 
         Given user accesses Landing Page
-        When user click on login page
-        And user logs in with valid email "01qa@df.co" and valid password "Admin@123"
-        Then user is on Home page
-        And My Home page contains "Projects" in nav bar
+        When user click on login link
+        And user logs in with valid email "favok92246@yasiok.com" and valid password "admin1234"
+        Then user is on my account page
+        And My Home page contains MY ACCOUNT as heading
+    
+    Scenario: Login and Logout with a valid account
 
-    Scenario: Starter user should be able to create only one project at a time
-
-        Given user click on New Project button
+        Given user accesses Landing Page
+        When user click on login link
+        And user logs in with valid email "favok92246@yasiok.com" and valid password "admin1234"
+        When user Logout
+        Then user is on Landing Page
